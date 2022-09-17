@@ -6,9 +6,15 @@
 
 # Usage: lint_python.sh [Path to Script]
 
+# Get usage function
+display_usage (){
+	echo "Usage: $0 [Path To Script]"
+	exit 1
+}
+
 # Run checks
 if [ $# -ne 1 ] ; then
-    usage
+	display_usage
 else
     PYFILE=$1
     echo "pylint check:"
@@ -19,8 +25,3 @@ else
     mypy "$PYFILE"
 fi
 
-# Get usage function
-usage(){
-	echo "Usage: $0 [Path To Script]"
-	exit 1
-}
